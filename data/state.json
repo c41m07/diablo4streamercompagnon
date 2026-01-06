@@ -1,0 +1,71 @@
+{
+  "builds": [
+    {
+      "source": "mobalytics",
+      "title": "Diablo 4Diablo 4 Barbarian Builds - Season 11 Endgame and Leveling Guides",
+      "author": "",
+      "updatedOn": "Dec 27, 2025",
+      "url": "https://mobalytics.gg/diablo-4/builds/barbarian/",
+      "highlights": []
+    },
+    {
+      "source": "mobalytics",
+      "title": "Diablo 4Diablo 4 Barbarian Builds - Season 11 Endgame and Leveling Guides",
+      "author": "",
+      "updatedOn": "Dec 27, 2025",
+      "url": "https://mobalytics.gg/diablo-4/builds/barbarian/",
+      "highlights": []
+    },
+    {
+      "source": "mobalytics",
+      "title": "Blessed Hammer - Hammerkuna",
+      "author": "",
+      "updatedOn": "Jan 4, 2026",
+      "url": "https://mobalytics.gg/diablo-4/builds/paladin-blessed-hammer-mekuna",
+      "highlights": [
+        "Pants: and Boots",
+        "Boots: the implicit Attacks Reduce Evade's Cooldown by 1"
+      ]
+    }
+  ],
+  "currentBuildIndex": 0,
+  "build": {
+    "source": "mobalytics",
+    "title": "Diablo 4Diablo 4 Barbarian Builds - Season 11 Endgame and Leveling Guides",
+    "author": "",
+    "updatedOn": "Dec 27, 2025",
+    "url": "https://mobalytics.gg/diablo-4/builds/barbarian/",
+    "highlights": []
+  },
+  "counters": {
+    "deaths": 2,
+    "uniques": 2
+  },
+  "objectives": [
+    "test"
+  ],
+  "nowIso": "2026-01-06T23:03:34.702Z",
+  "events": {
+    "nextWorldBoss": {
+      "type": "world_boss",
+      "title": "World Boss: Azmodan",
+      "zone": "Dry Steppes",
+      "startTime": "2026-01-07T00:45:00.000Z",
+      "startTs": 1767746700
+    },
+    "nextLegion": {
+      "type": "legion",
+      "title": "Légion",
+      "zone": "",
+      "startTime": "2026-01-06T23:05:00.000Z",
+      "startTs": 1767740700
+    },
+    "nextHelltide": {
+      "type": "helltide",
+      "title": "Helltide",
+      "zone": "",
+      "startTime": "2026-01-07T00:00:00.000Z",
+      "startTs": 1767744000
+    }
+  }
+}

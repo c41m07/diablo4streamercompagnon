@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>D4 Overlay — Panel</title>
+    <!-- Chargement du CSS local -->
+    <link rel="stylesheet" href="overlay.css" />
+    <!-- Bibliothèque Twitch Extension Helper -->
+    <script src="https://extension-files.twitch.tv/helper/v1/twitch-ext.min.js"></script>
+    <!-- Configuration API (EBS) -->
+    <script defer src="api_base.js"></script>
+    <!-- Script externe pour le panel (logique JS).  CSP interdit les scripts inline. -->
+    <script defer src="panel.js"></script>
+</head>
+<body>
+<div class="wrap">
+    <header class="card">
+        <div class="title">Diablo 4 Overlay</div>
+        <div class="sub" id="clock">—</div>
+    </header>
+
+    <section class="grid">
+        <div class="card">
+            <h2>Build</h2>
+
+            <div class="buildNav">
+                <button id="buildPrev" aria-label="Build précédente">◀</button>
+                <div class="buildNavInfo">
+                    <span id="buildNavLabel">1/1</span>
+                </div>
+                <button id="buildNext" aria-label="Build suivante">▶</button>
+            </div>
+
+            <div class="big" id="buildTitle">—</div>
+
+            <div class="meta" id="buildInfo">
+                <div><span class="k">Source</span> <span id="buildSource">—</span></div>
+                <div><span class="k">Auteur</span> <span id="buildAuthor">Inconnu</span></div>
+                <div><span class="k">Maj</span> <span id="buildUpdated">—</span></div>
+            </div>
+
+            <a class="buildLink" id="buildUrl" href="#" target="_blank" rel="noreferrer">—</a>
+        </div>
+
+        <div class="card">
+            <h2>Prochains events</h2>
+            <div class="row">
+                <div class="label" id="wbLabel">World Boss</div>
+                <div class="value" id="wbTime">—</div>
+            </div>
+            <div class="row">
+                <div class="label" id="legLabel">Légion</div>
+                <div class="value" id="legTime">—</div>
+            </div>
+            <div class="row">
+                <div class="label" id="htLabel">Helltide</div>
+                <div class="value" id="htTime">—</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Objectifs</h2>
+            <ul class="list" id="objectives"></ul>
+        </div>
+
+        <div class="card">
+            <h2>Compteurs</h2>
+            <div class="kpi">
+                <div class="kpiBox">
+                    <div class="kpiLabel">Morts</div>
+                    <div class="kpiValue" id="deaths">0</div>
+                </div>
+                <div class="kpiBox">
+                    <div class="kpiLabel">Uniques</div>
+                    <div class="kpiValue" id="uniques">0</div>
+                </div>
+            </div>
+            <div class="hint">
+                Astuce : mappe tes macros vers :
+                <code>POST /counter/deaths/inc</code>, <code>POST /counter/uniques/inc</code>
+            </div>
+        </div>
+    </section>
+</div>
+</body>
+</html>

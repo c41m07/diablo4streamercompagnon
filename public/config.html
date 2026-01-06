@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>D4 Overlay — Configuration</title>
+    <!-- Style spécifique à la page de configuration.  On conserve un style simple ici. -->
+    <style>
+        body{ font-family:system-ui,Segoe UI,Roboto,Arial; margin:20px; color:#111; }
+        .grid{ display:grid; grid-template-columns: 1fr 1fr; gap:16px; max-width:1000px; }
+        .card{ border:1px solid #ddd; border-radius:12px; padding:14px; }
+        h1{ margin-top:0; font-size:22px; }
+        h2{ margin:0 0 10px; font-size:16px; }
+        label{ display:block; font-size:12px; margin-top:10px; color:#333; }
+        input, textarea{ width:100%; padding:10px; border:1px solid #ccc; border-radius:10px; }
+        textarea{ min-height:120px; }
+        button{ padding:10px 12px; border-radius:10px; border:1px solid #333; background:#111; color:#fff; cursor:pointer; }
+        button.secondary{ background:#fff; color:#111; border-color:#aaa; }
+        .row{ display:flex; gap:10px; flex-wrap:wrap; margin-top:10px; }
+        .hint{ font-size:12px; color:#666; margin-top:8px; }
+        code{ background:#f4f4f4; padding:2px 6px; border-radius:8px; }
+    </style>
+    <!-- Bibliothèque Twitch Extension Helper -->
+    <script src="https://extension-files.twitch.tv/helper/v1/twitch-ext.min.js"></script>
+    <!-- Configuration API (EBS) -->
+    <script defer src="api_base.js"></script>
+    <!-- Script externe pour la configuration -->
+    <script defer src="config.js"></script>
+</head>
+<body>
+
+<div id="notice" style="margin-bottom:10px;font-size:14px;color:#d00;"></div>
+
+<h1>D4 Overlay — Admin</h1>
+<p class="hint">
+    Overlay : <code>/overlay</code> — État : <code>/state</code>
+</p>
+
+<div class="grid">
+
+    <div class="card">
+        <h2>Import Mobalytics</h2>
+        <label>URL Mobalytics</label>
+        <input id="mobUrl" placeholder="https://mobalytics.gg/diablo-4/builds/..." />
+        <div class="row">
+            <button id="btnImport">Importer</button>
+            <button class="secondary" id="btnOpenOverlay">Ouvrir l’overlay</button>
+        </div>
+        <p class="hint">Appelle : <code>GET /import/mobalytics?url=...</code></p>
+    </div>
+
+    <div class="card">
+        <h2>Compteurs</h2>
+        <div class="row">
+            <button id="dInc">+1 mort</button>
+            <button class="secondary" id="dDec">-1 mort</button>
+            <button id="uInc">+1 unique</button>
+            <button class="secondary" id="uDec">-1 unique</button>
+        </div>
+        <div class="row">
+            <button class="secondary" id="cResetDeaths">Reset morts</button>
+            <button class="secondary" id="cResetUniques">Reset uniques</button>
+        </div>
+        <p class="hint">Endpoints : <code>POST /counter/*</code></p>
+    </div>
+
+    <div class="card">
+        <h2>Build (manuel)</h2>
+        <div class="row">
+            <button class="secondary" id="bPrev">◀ Build précédente</button>
+            <button class="secondary" id="bNext">Build suivante ▶</button>
+            <button class="secondary" id="bDelete" style="margin-left:auto;">Supprimer cette build</button>
+        </div>
+        <div class="row" style="align-items:center;">
+            <span id="bIndex" style="font-size:12px;color:#666;">1/1</span>
+            <span id="bTitleLabel" style="font-size:12px;color:#333;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;"></span>
+        </div>
+        <label>Source</label>
+        <input id="bSource" placeholder="mobalytics / maxroll / manual ..." />
+        <label>Titre</label>
+        <input id="bTitle" placeholder="Death Trap Rogue (S11)" />
+        <label>Auteur</label>
+        <input id="bAuthor" placeholder="Inconnu si vide" />
+        <label>Dernière maj</label>
+        <input id="bUpdated" placeholder="Jan 6, 2026" />
+        <label>URL (cliquable dans l’overlay)</label>
+        <input id="bUrl" placeholder="https://..." />
+        <div class="row">
+            <button id="btnSaveBuild">Enregistrer</button>
+            <button class="secondary" id="btnLoadState">Recharger depuis /state</button>
+        </div>
+        <p class="hint">Endpoint : <code>POST /build</code></p>
+    </div>
+
+    <div class="card">
+        <h2>Objectifs</h2>
+        <label>Objectifs (1 ligne = 1 objectif)</label>
+        <textarea id="objText" placeholder="Farmer Shako\nOptimiser PIT 100"></textarea>
+        <div class="row">
+            <button id="btnSaveObj">Enregistrer</button>
+        </div>
+        <p class="hint">Endpoint : <code>POST /objectives</code></p>
+    </div>
+
+</div>
+
+</body>
+</html>
