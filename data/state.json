@@ -44,7 +44,7 @@
   "objectives": [
     "test"
   ],
-  "nowIso": "2026-01-06T23:03:34.702Z",
+  "nowIso": "2026-01-06T23:35:35.773Z",
   "events": {
     "nextWorldBoss": {
       "type": "world_boss",
@@ -57,8 +57,8 @@
       "type": "legion",
       "title": "Légion",
       "zone": "",
-      "startTime": "2026-01-06T23:05:00.000Z",
-      "startTs": 1767740700
+      "startTime": "2026-01-06T23:55:00.000Z",
+      "startTs": 1767743700
     },
     "nextHelltide": {
       "type": "helltide",

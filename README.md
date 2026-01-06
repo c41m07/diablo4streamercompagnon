@@ -4,7 +4,7 @@ Ce dépôt contient :
 - un backend Node/Express (`server.mjs`) utilisé comme **EBS** (Extension Backend Service)
 - des pages front dans `public/` (panel, video component, config, live config)
 
-## Pourquoi ça casse avec ngrok free
+## Pourquoi ça cassait avec ngrok free
 En mode Hosted Twitch, ngrok free peut renvoyer une **page HTML interstitielle** (content-type `text/html`) au lieu de forwarder vers ton backend. Le front attend du JSON → erreur « Réponse non JSON ».
 
 La solution fiable est d’héberger le backend sur une URL HTTPS stable (Render/Railway/Fly/VPS) ou d’utiliser ngrok avec domaine réservé.
@@ -24,14 +24,15 @@ Backend local: http://localhost:3199/health
    - Start Command: `npm start`
 4. Une URL est fournie (ex: `https://ton-service.onrender.com`).
 
-### Configurer l’extension
-Dans :
-- `public/config.js`
-- `public/live_config.js`
-- `public/panel.js`
-mettre `API_BASE` à l’URL Render.
+### Configurer le front (API_BASE)
+La configuration est centralisée dans :
+- `public/api_base.js`
 
-Ensuite regénérer `public.zip` et l’uploader sur Twitch.
+Par défaut :
+- en local (`localhost`), `API_BASE` reste vide (`""`) pour appeler en relatif.
+- en hébergé, `API_BASE` pointe vers Render.
+
+Si tu changes d’URL Render, modifie uniquement `public/api_base.js`.
 
 ## Regénérer public.zip
 Sous Windows PowerShell :
