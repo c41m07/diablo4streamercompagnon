@@ -276,16 +276,26 @@ app.get('/health', (req, res) => {
  * - Avec Authorization: Bearer <JWT>, le navigateur fait un preflight OPTIONS
  */
 const ALLOWED_ORIGIN_RE = /^https:\/\/[a-z0-9]+\.ext-twitch\.tv$/i;
+// Twitch peut aussi utiliser des domaines de staging (selon l'environnement / outils).
+const ALLOWED_ORIGIN_ALT_RE = /^https:\/\/[a-z0-9]+\.(?:ext-twitch\.tv|ext-twitch\.tech)$/i;
+
 const EXTRA_ALLOWED_ORIGINS = new Set([
     // Ajoute ici tes origines de dev si besoin
     "http://localhost:3199",
     "http://localhost:3000",
-    "http://localhost:5173"
+    "http://localhost:5173",
+    "http://127.0.0.1:3199",
+    "http://127.0.0.1:3000",
+    "http://127.0.0.1:5173"
 ]);
 
 function applyCors(req, res) {
     const origin = String(req.headers.origin || "").trim();
-    const isAllowed = origin && (ALLOWED_ORIGIN_RE.test(origin) || EXTRA_ALLOWED_ORIGINS.has(origin));
+    const originLc = origin.toLowerCase();
+
+    const isAllowed =
+        (originLc && (ALLOWED_ORIGIN_RE.test(originLc) || ALLOWED_ORIGIN_ALT_RE.test(originLc) || EXTRA_ALLOWED_ORIGINS.has(originLc))) ||
+        false;
 
     if (isAllowed) {
         res.setHeader("Access-Control-Allow-Origin", origin);
